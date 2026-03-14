@@ -19,7 +19,6 @@ pub use config::{
 pub use error::{PaddleOcrError, Result};
 pub use input::image_loader::{LoadImage, OcrInput};
 pub use output::json::OcrJsonItem;
-pub use pipeline::compat_rapidocr::{from_rapidocr_yaml_file, from_rapidocr_yaml_str};
 pub use pipeline::{
     config::{EngineConfig, GlobalConfig},
     rapid_ocr::{PipelineProviderResolutions, RapidOcr, RapidOcrEngine},
