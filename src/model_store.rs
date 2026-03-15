@@ -107,6 +107,7 @@ pub fn ensure_downloaded(
 fn build_http_client() -> Result<Client> {
     Client::builder()
         .timeout(Duration::from_secs(60))
+        .user_agent("Mozilla/5.0 (compatible; paddle-ocr-rs)")
         .build()
         .map_err(Into::into)
 }

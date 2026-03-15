@@ -124,7 +124,11 @@ impl LoadImage {
     }
 
     fn load_url(&self, url: &str) -> Result<RecImage> {
-        let response = reqwest::blocking::get(url)?;
+        let client = reqwest::blocking::Client::builder()
+            .timeout(std::time::Duration::from_secs(60))
+            .user_agent("Mozilla/5.0 (compatible; paddle-ocr-rs)")
+            .build()?;
+        let response = client.get(url).send()?;
         if !response.status().is_success() {
             return Err(PaddleOcrError::Download(format!(
                 "failed to fetch image from url {url}: HTTP {}",
